@@ -34,3 +34,12 @@ you can change the address for the controller/train? I don't really know.
 But address 3 is the one that controls the train.
 
 
+I was wrong, the Z21 device does not appear on the router, The ip above is 
+the ip address and MACaddress for the router itself.
+
+Now i think we can not use the z21 like i wanted. I think now you need to buy 
+more stuff that's proprietary
+
+Links:
+[Youtube](https://www.youtube.com/watch?v=cCQGqAJGVwo)
+[Their website](https://www.roco.cc/ren/products/control/accessories/10814-z21-wlan-package.html)
