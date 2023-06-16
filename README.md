@@ -1,13 +1,13 @@
-# jmri_test
+# Diary
 
-## Dag 1
-Planen idag är att kunna styra z21 start från min dator.
+## Day 1
+Plan for today is to be able to control the train through my computer/scripts
 
-https://www.z21.eu/en/products/z21/connections-z21#52-1271
-https://www.jmri.org/help/en/html/hardware/roco/z21/index.shtml#RocoZ21Ethernet
+[z21 interface](https://www.z21.eu/en/products/z21/connections-z21#52-1271)
+[jmri for z21](https://www.jmri.org/help/en/html/hardware/roco/z21/index.shtml#RocoZ21Ethernet)
 
-Laddade ner JMRI 5.2 - Production release
-https://www.jmri.org/download/index.shtml#prod-rel
+Downloaded for Linux: [JMRI 5.2](https://www.jmri.org/download/index.shtml#prod-rel) - Production release
 
-sudo apt install default-jdk
-sudo apt install default-jre
+Download Java:
+`sudo apt install default-jdk`
+`sudo apt install default-jre`
