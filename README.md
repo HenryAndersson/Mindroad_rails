@@ -10,4 +10,27 @@ Downloaded for Linux: [JMRI 5.2](https://www.jmri.org/download/index.shtml#prod-
 
 Download Java:  
 `sudo apt install default-jdk`  
-`sudo apt install default-jre`
+
+https://www.z21.eu/en/products/z21start/connections-z21
+
+
+
+In the menu, "select your DCC connection" i choose  
+"System manufacturer" : "Roco"
+"System connection" : "Roco Z21"
+"ip" : "192.168.1.250"
+"Connection Prefix" : "z"
+"Connection Name" : "Z21"
+
+
+I have no idea what i am doing, what is a "decoder" and which one do i choose?
+The ip address of the z21 192.168.1.250 ||  MACaddress of A0:63:91:AF:B9:35
+When i start decoder pro and try the locomotive, i don't know what DCCadress.
+How do not know where to get this information.
+
+
+On the [Manual](https://www.z21.eu/media/Kwc_Basic_DownloadTag_Component/47-1122-676-9476-7721-downloadTag/default/1ae598c7/1666183875/10810-multimaus-sv.pdf) for the controller. On page 29 pressing "Menu+1"
+you can change the address for the controller/train? I don't really know.
+But address 3 is the one that controls the train.
+
+
