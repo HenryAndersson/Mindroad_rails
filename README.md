@@ -51,4 +51,5 @@ Links:
 [MERG canpan and cansol](https://www.youtube.com/watch?v=jGefnAzpq3w)  
 [DCC Block occupancy](https://www.youtube.com/watch?v=DtYzP5RgcsA)  
 [servo motor control](https://www.youtube.com/watch?v=fHAPXAcW9ZQ)  
+[sensor and detection](https://www.youtube.com/watch?v=yDWI4ujtuIY)  
 
