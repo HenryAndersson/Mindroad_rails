@@ -53,3 +53,8 @@ Links:
 [detection with DCC](https://www.youtube.com/watch?v=DtYzP5RgcsA)  
 [Detection with sensor](https://www.youtube.com/watch?v=yDWI4ujtuIY)  
 [Mimic panel](https://www.youtube.com/watch?v=-qEL5MGZXB4)  
+
+
+## day 3
+
+program servo on a aurduino nano
