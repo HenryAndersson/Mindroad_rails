@@ -43,3 +43,12 @@ more stuff that's proprietary
 Links:
 [Youtube](https://www.youtube.com/watch?v=cCQGqAJGVwo)  ||
 [Their website](https://www.roco.cc/ren/products/control/accessories/10814-z21-wlan-package.html)
+
+
+## day 2
+
+[Block detection with MERG](https://www.youtube.com/watch?v=BviPcd8-Vt0)
+[MERG canpan and cansol](https://www.youtube.com/watch?v=jGefnAzpq3w)
+[DCC Block occupancy](https://www.youtube.com/watch?v=DtYzP5RgcsA)
+[servo motor control](https://www.youtube.com/watch?v=fHAPXAcW9ZQ)
+
