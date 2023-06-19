@@ -47,8 +47,8 @@ Links:
 
 ## day 2
 
-[Block detection with MERG](https://www.youtube.com/watch?v=BviPcd8-Vt0)
-[MERG canpan and cansol](https://www.youtube.com/watch?v=jGefnAzpq3w)
-[DCC Block occupancy](https://www.youtube.com/watch?v=DtYzP5RgcsA)
-[servo motor control](https://www.youtube.com/watch?v=fHAPXAcW9ZQ)
+[Block detection with MERG](https://www.youtube.com/watch?v=BviPcd8-Vt0)  
+[MERG canpan and cansol](https://www.youtube.com/watch?v=jGefnAzpq3w)  
+[DCC Block occupancy](https://www.youtube.com/watch?v=DtYzP5RgcsA)  
+[servo motor control](https://www.youtube.com/watch?v=fHAPXAcW9ZQ)  
 
