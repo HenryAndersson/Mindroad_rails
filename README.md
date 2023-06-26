@@ -86,4 +86,10 @@ PWM signal is given in through this wire to drive the motor
 
 
 ## day 4
-https://www.electronics-lab.com/project/using-sg90-servo-motor-arduino/
+
+[servo schematics](https://www.electronics-lab.com/project/using-sg90-servo-motor-arduino/)  
+[buttons schematics](https://roboindia.com/tutorials/arduino-nano-digital-input-push-button/)  
+[nano schematics](https://www.teachmemicro.com/wp-content/uploads/2019/06/Arduino-Nano-pinout.jpg)  
+
+Jag har lyckats programera servon att åka fram och tillbaka med hjälp av knapptryck
+Nu är mitt mål att 3D printa en hållare för servon och sedan flytta lås på räls
