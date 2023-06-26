@@ -57,4 +57,33 @@ Links:
 
 ## day 3
 
+
+https://components101.com/motors/servo-motor-basics-pinout-datasheet
+
+
 program servo on a aurduino nano
+
+picocom -b 115200 -r -l /dev/ttyUSB0
+
+picocom -b 115200 /dev/ttyUSB0
+ctrl a ctrl q
+
+breadboard
+blue ground
+red plus
+
+[Servo motor](https://components101.com/motors/servo-motor-basics-pinout-datasheet)
+
+Brown
+Ground wire connected to the ground of system
+
+Red
+Powers the motor typically +5V is used
+
+Orange
+PWM signal is given in through this wire to drive the motor
+
+
+
+## day 4
+https://www.electronics-lab.com/project/using-sg90-servo-motor-arduino/
