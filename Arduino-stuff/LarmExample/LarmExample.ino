@@ -35,7 +35,7 @@ void loop() {
   if (button1.fell()) {
     sev1 = !sev1;
     if (sev1) {
-      servo_pin_2.write(180);
+      servo_pin_2.write(40);
     } else {
       servo_pin_2.write(0);
     }
@@ -46,7 +46,7 @@ void loop() {
   if (button2.fell()) {
         sev2 = !sev2;
     if (sev2) {
-      servo_pin_3.write(180);
+      servo_pin_3.write(40);
     } else {
       servo_pin_3.write(0);
     }
