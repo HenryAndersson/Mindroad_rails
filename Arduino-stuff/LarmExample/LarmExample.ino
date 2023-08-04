@@ -1,3 +1,7 @@
+int modulo(int x,int N){
+    return (x % N + N) %N;
+}
+
 #include <Servo.h>
 #include <Bounce2.h>
 
@@ -8,11 +12,13 @@ Bounce button1 = Bounce();
 Bounce button2 = Bounce();
 
 void setup() {
+    Serial.begin(9600);
+
   button1.attach(4);
-  button1.interval(10);
+  button1.interval(100);
 
   button2.attach(5);
-  button2.interval(10);
+  button2.interval(100);
 
 
   servo_pin_2.attach(2, 530, 2600);
@@ -28,12 +34,17 @@ void setup() {
 bool sev1 = false;
 bool sev2 = false;
 
+signed char state = 1;
+
 void loop() {
   button1.update();
   button2.update();
 
   if (button1.fell()) {
     sev1 = !sev1;
+    state++;
+    Serial.println("button 1 ");
+    
     if (sev1) {
       servo_pin_2.write(40);
     } else {
@@ -44,7 +55,10 @@ void loop() {
   }
 
   if (button2.fell()) {
-        sev2 = !sev2;
+    state--;
+    Serial.println("button 2");
+
+    sev2 = !sev2;
     if (sev2) {
       servo_pin_3.write(40);
     } else {
@@ -53,4 +67,9 @@ void loop() {
 
     delay(100);
   }
+
+
+    
+  state = modulo(state, 3)
+  Serial.println(state);
 }
