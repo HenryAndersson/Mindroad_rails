@@ -1,5 +1,4 @@
 
-
 #include <Servo.h>
 #include <Bounce2.h>
 #include <Adafruit_GFX.h>
@@ -12,13 +11,12 @@ Servo servo_pin_3;
 Bounce button1 = Bounce();
 Bounce button2 = Bounce();
 
-#define SCREEN_WIDTH 128  // OLED display width, in pixels
-#define SCREEN_HEIGHT 32  // OLED display height, in pixels
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 32
 
-// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
-#define OLED_RESET 4  // Reset pin # (or -1 if sharing Arduino reset pin)
+#define OLED_RESET 4
+
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
 
 int modulo(int x, int N) {
   return (x % N + N) % N;
@@ -29,6 +27,14 @@ void writeString(char* text) {
   while (*c) {
     display.write(*c);
     c++;
+  }
+}
+
+void drawLine(int start, int stop) {
+  for (int i = start; i < stop; ++i) {
+    display.drawPixel(i, 17, WHITE);
+    display.drawPixel(i, 18, WHITE);
+    display.drawPixel(i, 19, WHITE);
   }
 }
 
@@ -80,7 +86,7 @@ void loop() {
   button2.update();
 
   if (button1.fell()) {
-    //Serial.println("1!");
+    Serial.println("1!");
     --state;
     sev1 = !sev1;
     if (sev1) {
@@ -93,7 +99,7 @@ void loop() {
   }
 
   if (button2.fell()) {
-    //Serial.println("2!");
+    Serial.println("2!");
     ++state;
     sev2 = !sev2;
     if (sev2) {
@@ -109,23 +115,21 @@ void loop() {
   display.clearDisplay();
   display.setCursor(0, 0);
 
-
-  for (int i = 0; i < SCREEN_WIDTH; ++i) {
-    display.drawPixel(i, 17, WHITE);
-  }
-
-
   switch (state) {
     case 0:
       writeString("LEFT");
+			drawLine(0, SCREEN_WIDTH / 3);
       break;
     case 1:
       writeString("MIDDLE");
+			drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2 / 3));
       break;
     case 2:
       writeString("RIGHT");
+			drawLine((SCREEN_WIDTH * 2)  / 3, SCREEN_WIDTH);
       break;
   }
+
   display.display();
   Serial.println(state);
 }
