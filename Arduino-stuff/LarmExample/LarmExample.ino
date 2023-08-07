@@ -29,11 +29,19 @@ void writeString(char* text) {
   }
 }
 
-void drawLine(int start, int stop) {
+void drawLine(int start, int stop, int thick) {
   for (int i = start; i < stop; ++i) {
-    display.drawPixel(i, 17, WHITE);
-    display.drawPixel(i, 18, WHITE);
-    display.drawPixel(i, 19, WHITE);
+    for (int j = 0; j < thick; j++) {
+      display.drawPixel(i, 16 + j, WHITE);
+    }
+  }
+}
+
+void writeGate(bool b) {
+  if (b) {
+    writeString("on");
+  } else {
+    writeString("off");
   }
 }
 
@@ -110,24 +118,33 @@ void loop() {
     delay(100);
   }
 
-  state = modulo(state, 3);
+  //state = modulo(state, 3);
   display.clearDisplay();
   display.setCursor(0, 0);
 
+  writeString("Gate 1:");
+  writeGate(sev1);
+  drawLine(0, SCREEN_WIDTH, 1);
+  display.setCursor(0, 18);
+  writeString("Gate 2:");
+  writeGate(sev2);
+
+  /*
   switch (state) {
     case 0:
       writeString("LEFT");
-			drawLine(0, SCREEN_WIDTH / 3);
+			drawLine(0, SCREEN_WIDTH / 3, 3);
       break;
     case 1:
       writeString("MIDDLE");
-			drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2) / 3);
+			drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2) / 3, 3);
       break;
     case 2:
       writeString("RIGHT");
-			drawLine((SCREEN_WIDTH * 2)  / 3, SCREEN_WIDTH);
+			drawLine((SCREEN_WIDTH * 2)  / 3, SCREEN_WIDTH, 3);
       break;
   }
+	*/
 
   display.display();
   Serial.println(state);
