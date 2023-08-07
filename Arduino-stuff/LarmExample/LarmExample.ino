@@ -108,6 +108,13 @@ void loop() {
   state = modulo(state, 3);
   display.clearDisplay();
   display.setCursor(0, 0);
+
+
+  for (int i = 0; i < SCREEN_WIDTH; ++i) {
+    display.drawPixel(i, 17, WHITE);
+  }
+
+
   switch (state) {
     case 0:
       writeString("LEFT");
