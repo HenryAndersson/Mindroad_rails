@@ -1,4 +1,32 @@
-void gate2(){
+int modulo(int x, int N) {
+  return (x % N + N) % N;
+}
+
+void writeString(char* text) {
+  char* c = text;
+  while (*c) {
+    display.write(*c);
+    c++;
+  }
+}
+
+void drawLine(int start, int stop, int thick) {
+  for (int i = start; i < stop; ++i) {
+    for (int j = 0; j < thick; j++) {
+      display.drawPixel(i, 16 + j, WHITE);
+    }
+  }
+}
+
+void writeGate(bool b) {
+  if (b) {
+    writeString("on");
+  } else {
+    writeString("off");
+  }
+}
+
+void gate2() {
   button1.update();
   button2.update();
 
@@ -37,4 +65,43 @@ void gate2(){
 
   display.display();
   Serial.println(state);
-};
+}
+
+void gate3() {
+  button1.update();
+  button2.update();
+
+  if (button1.fell()) {
+    Serial.println("1!");
+    --state;
+    delay(100);
+  }
+
+  if (button2.fell()) {
+    Serial.println("2!");
+    ++state;
+    delay(100);
+  }
+
+  state = modulo(state, 3);
+
+  display.clearDisplay();
+  display.setCursor(0, 0);
+  switch (state) {
+    case 0:
+      writeString("LEFT");
+      drawLine(0, SCREEN_WIDTH / 3, 3);
+      break;
+    case 1:
+      writeString("MIDDLE");
+      drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2) / 3, 3);
+      break;
+    case 2:
+      writeString("RIGHT");
+      drawLine((SCREEN_WIDTH * 2) / 3, SCREEN_WIDTH, 3);
+      break;
+  }
+
+  display.display();
+  Serial.println(state);
+}
