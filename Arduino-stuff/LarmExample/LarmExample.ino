@@ -1,4 +1,3 @@
-
 #include <Servo.h>
 #include <Bounce2.h>
 #include <Adafruit_GFX.h>
@@ -122,7 +121,7 @@ void loop() {
       break;
     case 1:
       writeString("MIDDLE");
-			drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2 / 3));
+			drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2) / 3);
       break;
     case 2:
       writeString("RIGHT");
