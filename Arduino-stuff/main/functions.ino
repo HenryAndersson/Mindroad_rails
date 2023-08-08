@@ -64,7 +64,6 @@ void gate2() {
   writeGate(sev2);
 
   display.display();
-  Serial.println(state);
 }
 
 void gate3() {
@@ -103,5 +102,4 @@ void gate3() {
   }
 
   display.display();
-  Serial.println(state);
 }
