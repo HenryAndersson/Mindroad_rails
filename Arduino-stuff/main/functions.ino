@@ -107,12 +107,12 @@ void gate3() {
     case 1:
       writeString("MIDDLE");
       drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2) / 3, 3);
-				updateServo(has_updated, 0, 40);
+				updateServo(has_updated, 0, 70);
       break;
     case 2:
       writeString("RIGHT");
       drawLine((SCREEN_WIDTH * 2) / 3, SCREEN_WIDTH, 3);
-      updateServo(has_updated, 40, 0);
+      updateServo(has_updated, 70, 70);
       break;
   }
 

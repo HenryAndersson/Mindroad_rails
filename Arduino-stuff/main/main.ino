@@ -32,14 +32,11 @@ void setup() {
 
   pinMode(2, OUTPUT);
   servo_pin_2.attach(2, 530, 2600);
-  servo_pin_2.write(0);
+  //servo_pin_2.write(0);
 
   pinMode(3, OUTPUT);
   servo_pin_3.attach(3, 530, 2600);
-  servo_pin_3.write(0);
-  delay(2000);
-
-
+  //servo_pin_3.write(0);
 
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {  // Address 0x3C for 128x32
     Serial.println(F("SSD1306 allocation failed"));
@@ -56,8 +53,8 @@ void setup() {
 
   Serial.println("Klar!");
 
-	updateServo(true, 0, 40);
-
+	updateServo(true, 0, 70);
+ k
 }
 
 bool sev1 = false;
