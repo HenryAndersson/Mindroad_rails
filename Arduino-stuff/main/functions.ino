@@ -26,6 +26,13 @@ void writeGate(bool b) {
   }
 }
 
+void updateServo(bool has_updated, int rotate1, int rotate2) {
+	if (has_updated){
+		servo_pin_2.write(rotate1);
+		servo_pin_3.write(rotate2);
+	}
+}
+
 void gate2() {
   button1.update();
   button2.update();
@@ -66,17 +73,22 @@ void gate2() {
   display.display();
 }
 
+bool has_updated = true;
+
 void gate3() {
+  has_updated = false;
   button1.update();
   button2.update();
 
   if (button1.fell()) {
     Serial.println("1!");
     --state;
+    has_updated = true;
     delay(100);
   }
 
   if (button2.fell()) {
+    has_updated = true;
     Serial.println("2!");
     ++state;
     delay(100);
@@ -90,14 +102,17 @@ void gate3() {
     case 0:
       writeString("LEFT");
       drawLine(0, SCREEN_WIDTH / 3, 3);
+      updateServo(has_updated, 0, 0);
       break;
     case 1:
       writeString("MIDDLE");
       drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2) / 3, 3);
+				updateServo(has_updated, 0, 40);
       break;
     case 2:
       writeString("RIGHT");
       drawLine((SCREEN_WIDTH * 2) / 3, SCREEN_WIDTH, 3);
+      updateServo(has_updated, 40, 0);
       break;
   }
 
