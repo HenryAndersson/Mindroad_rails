@@ -33,6 +33,51 @@ void updateServo(bool has_updated, int rotate1, int rotate2) {
 	}
 }
 
+void rotate_servo1(){
+  if (currentTime - StartTimer_servo1 >= internalTimer_servo && sev1) {
+    StartTimer_servo1 = currentTime;
+    servo_pin_2.write(servo_angle1);
+    servo_angle1 += 7;
+    if (servo_angle1 >= 70) {
+      servo_angle1 = 70;
+      sev1_av = true;
+    }
+  }
+
+  if (currentTime - StartTimer_servo1 >= internalTimer_servo && !sev1) {
+    StartTimer_servo1 = currentTime;
+    servo_pin_2.write(servo_angle1);
+    servo_angle1 -= 7;
+    if (servo_angle1 <= 0) {
+      servo_angle1 = 0;
+      sev1_av = true;
+    }
+  }
+}
+
+void rotate_servo2(){
+  if (currentTime - StartTimer_servo2 >= internalTimer_servo && sev2) {
+    StartTimer_servo2 = currentTime;
+    servo_pin_3.write(servo_angle2);
+    servo_angle2 += 7;
+    if (servo_angle2 >= 70) {
+      servo_angle2 = 70;
+      sev2_av = true;
+    }
+  }
+
+  if (currentTime - StartTimer_servo2 >= internalTimer_servo && !sev2) {
+    StartTimer_servo2 = currentTime;
+    servo_pin_3.write(servo_angle2);
+    servo_angle2 -= 7;
+    if (servo_angle2 <= 0) {
+      servo_angle2 = 0;
+      sev2_av = true;
+    }
+  }
+}
+
+
 void gate2() {
   button1.update();
   button2.update();
@@ -40,23 +85,17 @@ void gate2() {
   if (button1.fell()) {
     Serial.println("1!");
     sev1 = !sev1;
-    if (sev1) {
-      servo_pin_2.write(70);
-    } else {
-      servo_pin_2.write(0);
-    }
-
+		sev1_av = false;
   }
 
   if (button2.fell()) {
     Serial.println("2!");
     sev2 = !sev2;
-    if (sev2) {
-      servo_pin_3.write(70);
-    } else {
-      servo_pin_3.write(0);
-    }
+		sev2_av = false;
   }
+
+	rotate_servo2();
+	rotate_servo1();
 
   display.clearDisplay();
   display.setCursor(0, 0);

@@ -59,7 +59,7 @@ void setup() {
   Serial.println("Klar!");
 
   //updateServo(true, 0, 70);
-  updateServo(true, 0, 0);
+  //updateServo(true, 0, 0);
 }
 
 bool sev1 = false;
@@ -70,49 +70,22 @@ int state = 1;
 unsigned long currentTime = -1;
 
 unsigned long StartTimer_servo1 = 0;
-unsigned long Starttimer_servo2 = 0;
+unsigned long StartTimer_servo2 = 0;
 
 unsigned long internalTimer_servo = 40;  //milliseconds
 
 int servo_angle1 = 0;
 int servo_angle2 = 0;
 
-unsigned long interval_servo = 10;
-bool asd = true;
+bool sev1_av = true;
+bool sev2_av = true;
 
 bool has_updated = true;
 
 void loop() {
-  button1.update();
-  unsigned long currentTime = millis();
-
-  if (button1.fell() && asd) {
-    Serial.println("1");
-    sev1 = !sev1;
-		asd = false;
-  }
-
+  currentTime = millis();
 #if 1
-  if (currentTime - StartTimer_servo1 >= internalTimer_servo && sev1) {
-    StartTimer_servo1 = currentTime;
-    servo_pin_3.write(servo_angle1);
-    servo_angle1 += 7;
-    if (servo_angle1 >= 70) {
-      servo_angle1 = 70;
-      asd = true;
-    }
-  }
-
-  if (currentTime - StartTimer_servo1 >= internalTimer_servo && !sev1) {
-    StartTimer_servo1 = currentTime;
-    servo_pin_3.write(servo_angle1);
-    servo_angle1 -= 7;
-    if (servo_angle1 <= 0) {
-      servo_angle1 = 0;
-      asd = true;
-    }
-  }
-  //gate2();
+  gate2();
 #else
   gate3();
 #endif
