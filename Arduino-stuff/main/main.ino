@@ -4,6 +4,16 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 32
+
+#define ANGLE_ON 70
+#define ANGLE_OFF 0
+
+#define OLED_RESET 4
+
+#define LED1 7
+#define LED2 8
 
 Servo servo_pin_2;
 Servo servo_pin_3;
@@ -11,16 +21,7 @@ Servo servo_pin_3;
 Bounce button1 = Bounce();
 Bounce button2 = Bounce();
 
-#define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 32
-
-#define OLED_RESET 4
-
-#define LED1 7
-#define LED2 8
-
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
 
 void setup() {
   Serial.begin(9600);
@@ -84,7 +85,7 @@ bool has_updated = true;
 
 void loop() {
   currentTime = millis();
-#if 1
+#if 0
   gate2();
 #else
   gate3();

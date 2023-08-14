@@ -33,28 +33,29 @@ void writeGate(bool b) {
 void updateServo(bool has_updated, int rotate1, int rotate2) {
   if (has_updated) {
     servo_pin_2.write(rotate1);
-    servo_pin_3.write(rotate2);
+    servo_pin_3.write(rotate2);kjkj
   }
 }
 
 
 void rotate_servo(unsigned long* StartTimer_servo, bool sev, int* servo_angle, bool* sev_av, Servo servo_pin) {
-  if (currentTime - *StartTimer_servo >= internalTimer_servo && sev) {
+	unsigned long deltaTime = currentTime - *StartTimer_servo;
+  if (deltaTime >= internalTimer_servo && sev) {
     *StartTimer_servo = currentTime;
     servo_pin.write(*servo_angle);
     *servo_angle += 10;
-    if (*servo_angle >= 70) {
-      *servo_angle = 70;
+    if (*servo_angle >= ANGLE_ON) {
+      *servo_angle = ANGLE_ON;
       *sev_av = true;
     }
   }
 
-  if (currentTime - *StartTimer_servo >= internalTimer_servo && !sev) {
+  if (deltaTime >= internalTimer_servo && !sev) {
     *StartTimer_servo = currentTime;
     servo_pin.write(*servo_angle);
     *servo_angle -= 10;
-    if (*servo_angle <= 0) {
-      *servo_angle = 0;
+    if (*servo_angle <= ANGLE_OFF) {
+      *servo_angle = ANGLE_OFF;
       *sev_av = true;
     }
   }
