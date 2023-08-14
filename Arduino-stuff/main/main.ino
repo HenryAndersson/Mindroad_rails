@@ -72,7 +72,7 @@ unsigned long currentTime = -1;
 unsigned long StartTimer_servo1 = 0;
 unsigned long StartTimer_servo2 = 0;
 
-unsigned long internalTimer_servo = 40;  //milliseconds
+unsigned long internalTimer_servo = 10;  //milliseconds
 
 int servo_angle1 = 0;
 int servo_angle2 = 0;
@@ -90,14 +90,3 @@ void loop() {
   gate3();
 #endif
 }
-
-
-
-/*
-	if (currentTime - StartTimer_servo1 >= internalTimer_servo1){
-		StartTimer_servo1 = currentTime;
-		servo_pin_3.write(servo_angle1);
-		servo_angle1 += 7;
-		if(servo_angle1 == 70) servo_angle1 = 0;
-	}
-*/

@@ -2,6 +2,10 @@ int modulo(int x, int N) {
   return (x % N + N) % N;
 }
 
+int mini(int x, int y) {
+  return x <= y ? x : y;
+}
+
 void writeString(char* text) {
   char* c = text;
   while (*c) {
@@ -27,52 +31,31 @@ void writeGate(bool b) {
 }
 
 void updateServo(bool has_updated, int rotate1, int rotate2) {
-	if (has_updated){
-		servo_pin_2.write(rotate1);
-		servo_pin_3.write(rotate2);
-	}
-}
-
-void rotate_servo1(){
-  if (currentTime - StartTimer_servo1 >= internalTimer_servo && sev1) {
-    StartTimer_servo1 = currentTime;
-    servo_pin_2.write(servo_angle1);
-    servo_angle1 += 7;
-    if (servo_angle1 >= 70) {
-      servo_angle1 = 70;
-      sev1_av = true;
-    }
-  }
-
-  if (currentTime - StartTimer_servo1 >= internalTimer_servo && !sev1) {
-    StartTimer_servo1 = currentTime;
-    servo_pin_2.write(servo_angle1);
-    servo_angle1 -= 7;
-    if (servo_angle1 <= 0) {
-      servo_angle1 = 0;
-      sev1_av = true;
-    }
+  if (has_updated) {
+    servo_pin_2.write(rotate1);
+    servo_pin_3.write(rotate2);
   }
 }
 
-void rotate_servo2(){
-  if (currentTime - StartTimer_servo2 >= internalTimer_servo && sev2) {
-    StartTimer_servo2 = currentTime;
-    servo_pin_3.write(servo_angle2);
-    servo_angle2 += 7;
-    if (servo_angle2 >= 70) {
-      servo_angle2 = 70;
-      sev2_av = true;
+
+void rotate_servo(unsigned long* StartTimer_servo, bool sev, int* servo_angle, bool* sev_av, Servo servo_pin) {
+  if (currentTime - *StartTimer_servo >= internalTimer_servo && sev) {
+    *StartTimer_servo = currentTime;
+    servo_pin.write(*servo_angle);
+    *servo_angle += 10;
+    if (*servo_angle >= 70) {
+      *servo_angle = 70;
+      *sev_av = true;
     }
   }
 
-  if (currentTime - StartTimer_servo2 >= internalTimer_servo && !sev2) {
-    StartTimer_servo2 = currentTime;
-    servo_pin_3.write(servo_angle2);
-    servo_angle2 -= 7;
-    if (servo_angle2 <= 0) {
-      servo_angle2 = 0;
-      sev2_av = true;
+  if (currentTime - *StartTimer_servo >= internalTimer_servo && !sev) {
+    *StartTimer_servo = currentTime;
+    servo_pin.write(*servo_angle);
+    *servo_angle -= 10;
+    if (*servo_angle <= 0) {
+      *servo_angle = 0;
+      *sev_av = true;
     }
   }
 }
@@ -85,17 +68,18 @@ void gate2() {
   if (button1.fell()) {
     Serial.println("1!");
     sev1 = !sev1;
-		sev1_av = false;
+    sev1_av = false;
   }
 
   if (button2.fell()) {
     Serial.println("2!");
     sev2 = !sev2;
-		sev2_av = false;
+    sev2_av = false;
   }
 
-	rotate_servo2();
-	rotate_servo1();
+  rotate_servo(&StartTimer_servo1, sev1, &servo_angle1, &sev1_av, servo_pin_2);
+  rotate_servo(&StartTimer_servo2, sev2, &servo_angle2, &sev2_av, servo_pin_3);
+
 
   display.clearDisplay();
   display.setCursor(0, 0);
@@ -140,7 +124,7 @@ void gate3() {
     case 1:
       writeString("MIDDLE");
       drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2) / 3, 3);
-				updateServo(has_updated, 0, 70);
+      updateServo(has_updated, 0, 70);
       break;
     case 2:
       writeString("RIGHT");
