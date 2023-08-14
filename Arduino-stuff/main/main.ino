@@ -26,8 +26,8 @@ void setup() {
   Serial.begin(9600);
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
-
   pinMode(5, INPUT_PULLUP);
+
   button1.attach(5);
   button1.interval(10);
 
@@ -57,42 +57,74 @@ void setup() {
   display.setCursor(0, 0);
   display.cp437(true);
   Serial.println("Klar!");
-  updateServo(true, 0, 70);
 
-  digitalWrite(LED1, LOW);
+  //updateServo(true, 0, 70);
+  updateServo(true, 0, 0);
 }
 
 bool sev1 = false;
 bool sev2 = false;
 int state = 1;
 
-unsigned long timer_led1 = 0;
-unsigned long timer_led2 = 0;
 
-unsigned long interval_led = 10;
+unsigned long currentTime = -1;
+
+unsigned long StartTimer_servo1 = 0;
+unsigned long Starttimer_servo2 = 0;
+
+unsigned long internalTimer_servo = 40;  //milliseconds
+
+int servo_angle1 = 0;
+int servo_angle2 = 0;
+
+unsigned long interval_servo = 10;
+bool asd = true;
+
+bool has_updated = true;
 
 void loop() {
+  button1.update();
   unsigned long currentTime = millis();
 
-  //digitalWrite(LED2, LOW);
-  //delay(100);
-  //digitalWrite(LED1, LOW);
-  //digitalWrite(LED2, HIGH);
-  //delay(100);
+  if (button1.fell() && asd) {
+    Serial.println("1");
+    sev1 = !sev1;
+		asd = false;
+  }
 
 #if 1
-  if (digitalRead(6) == HIGH) {
-    digitalWrite(LED1, HIGH);
-  } else {
-    digitalWrite(LED1, LOW);
+  if (currentTime - StartTimer_servo1 >= internalTimer_servo && sev1) {
+    StartTimer_servo1 = currentTime;
+    servo_pin_3.write(servo_angle1);
+    servo_angle1 += 7;
+    if (servo_angle1 >= 70) {
+      servo_angle1 = 70;
+      asd = true;
+    }
   }
 
-  if (digitalRead(5) == HIGH) {
-    digitalWrite(LED2, HIGH);
-  } else {
-    digitalWrite(LED2, LOW);
+  if (currentTime - StartTimer_servo1 >= internalTimer_servo && !sev1) {
+    StartTimer_servo1 = currentTime;
+    servo_pin_3.write(servo_angle1);
+    servo_angle1 -= 7;
+    if (servo_angle1 <= 0) {
+      servo_angle1 = 0;
+      asd = true;
+    }
   }
+  //gate2();
 #else
   gate3();
 #endif
 }
+
+
+
+/*
+	if (currentTime - StartTimer_servo1 >= internalTimer_servo1){
+		StartTimer_servo1 = currentTime;
+		servo_pin_3.write(servo_angle1);
+		servo_angle1 += 7;
+		if(servo_angle1 == 70) servo_angle1 = 0;
+	}
+*/

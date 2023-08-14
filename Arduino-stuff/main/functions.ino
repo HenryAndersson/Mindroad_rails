@@ -41,23 +41,21 @@ void gate2() {
     Serial.println("1!");
     sev1 = !sev1;
     if (sev1) {
-      servo_pin_2.write(40);
+      servo_pin_2.write(70);
     } else {
       servo_pin_2.write(0);
     }
 
-    delay(100);
   }
 
   if (button2.fell()) {
     Serial.println("2!");
     sev2 = !sev2;
     if (sev2) {
-      servo_pin_3.write(40);
+      servo_pin_3.write(70);
     } else {
       servo_pin_3.write(0);
     }
-    delay(100);
   }
 
   display.clearDisplay();
@@ -73,8 +71,6 @@ void gate2() {
   display.display();
 }
 
-bool has_updated = true;
-
 void gate3() {
   has_updated = false;
   button1.update();
@@ -84,14 +80,12 @@ void gate3() {
     Serial.println("1!");
     --state;
     has_updated = true;
-    delay(100);
   }
 
   if (button2.fell()) {
     has_updated = true;
     Serial.println("2!");
     ++state;
-    delay(100);
   }
 
   state = modulo(state, 3);
