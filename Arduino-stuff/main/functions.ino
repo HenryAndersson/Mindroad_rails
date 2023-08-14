@@ -1,10 +1,14 @@
+
+
 int modulo(int x, int N) {
   return (x % N + N) % N;
 }
 
+
 int mini(int x, int y) {
   return x <= y ? x : y;
 }
+
 
 void writeString(char* text) {
   char* c = text;
@@ -13,6 +17,7 @@ void writeString(char* text) {
     c++;
   }
 }
+
 
 void drawLine(int start, int stop, int thick) {
   for (int i = start; i < stop; ++i) {
@@ -30,6 +35,7 @@ void writeGate(bool b) {
   }
 }
 
+
 void updateServo(bool has_updated, int rotate1, int rotate2) {
   if (has_updated) {
     servo_pin_2.write(rotate1);
@@ -39,11 +45,11 @@ void updateServo(bool has_updated, int rotate1, int rotate2) {
 
 
 void rotate_servo(unsigned long* StartTimer_servo, bool sev, int* servo_angle, bool* sev_av, Servo servo_pin) {
-	unsigned long deltaTime = currentTime - *StartTimer_servo;
+  unsigned long deltaTime = currentTime - *StartTimer_servo;
   if (deltaTime >= internalTimer_servo && sev) {
     *StartTimer_servo = currentTime;
     servo_pin.write(*servo_angle);
-    *servo_angle += 10;
+    *servo_angle += ANGLE_MOVE;
     if (*servo_angle >= ANGLE_ON) {
       *servo_angle = ANGLE_ON;
       *sev_av = true;
@@ -53,7 +59,7 @@ void rotate_servo(unsigned long* StartTimer_servo, bool sev, int* servo_angle, b
   if (deltaTime >= internalTimer_servo && !sev) {
     *StartTimer_servo = currentTime;
     servo_pin.write(*servo_angle);
-    *servo_angle -= 10;
+    *servo_angle -= ANGLE_MOVE;
     if (*servo_angle <= ANGLE_OFF) {
       *servo_angle = ANGLE_OFF;
       *sev_av = true;
@@ -66,19 +72,19 @@ void gate2() {
   button1.update();
   button2.update();
 
-  if (button1.fell()) {
+  if (button1.fell() && sev1_av) {
     Serial.println("1!");
     sev1 = !sev1;
     sev1_av = false;
   }
 
-  if (button2.fell()) {
+  if (button2.fell() && sev2_av) {
     Serial.println("2!");
     sev2 = !sev2;
     sev2_av = false;
   }
 
-  rotate_servo(&StartTimer_servo1, sev1, &servo_angle1, &sev1_av, servo_pin_2);
+  //rotate_servo(&StartTimer_servo1, sev1, &servo_angle1, &sev1_av, servo_pin_2);
   rotate_servo(&StartTimer_servo2, sev2, &servo_angle2, &sev2_av, servo_pin_3);
 
 
@@ -94,6 +100,7 @@ void gate2() {
 
   display.display();
 }
+
 
 void gate3() {
   has_updated = false;

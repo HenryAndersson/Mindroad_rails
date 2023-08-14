@@ -10,6 +10,9 @@
 #define ANGLE_ON 70
 #define ANGLE_OFF 0
 
+#define ANGLE_MOVE 3 //degres
+#define internalTimer_servo 30  //millisecond
+
 #define OLED_RESET 4
 
 #define LED1 7
@@ -22,6 +25,26 @@ Bounce button1 = Bounce();
 Bounce button2 = Bounce();
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+bool sev1 = false;
+bool sev2 = false;
+int state = 1;
+
+
+unsigned long currentTime = -1;
+
+unsigned long StartTimer_servo1 = 0;
+unsigned long StartTimer_servo2 = 0;
+
+
+int servo_angle1 = 0;
+int servo_angle2 = 0;
+
+bool sev1_av = true;
+bool sev2_av = true;
+
+bool has_updated = true;
+
 
 void setup() {
   Serial.begin(9600);
@@ -58,34 +81,23 @@ void setup() {
   display.setCursor(0, 0);
   display.cp437(true);
   Serial.println("Klar!");
-
-  //updateServo(true, 0, 70);
-  //updateServo(true, 0, 0);
 }
 
-bool sev1 = false;
-bool sev2 = false;
-int state = 1;
-
-
-unsigned long currentTime = -1;
-
-unsigned long StartTimer_servo1 = 0;
-unsigned long StartTimer_servo2 = 0;
-
-unsigned long internalTimer_servo = 10;  //milliseconds
-
-int servo_angle1 = 0;
-int servo_angle2 = 0;
-
-bool sev1_av = true;
-bool sev2_av = true;
-
-bool has_updated = true;
 
 void loop() {
   currentTime = millis();
-#if 0
+  if (digitalRead(6) == HIGH) {
+    digitalWrite(LED1, HIGH);
+  } else {
+    digitalWrite(LED1, LOW);
+  }
+
+  if (digitalRead(5) == HIGH) {
+    digitalWrite(LED2, HIGH);
+  } else {
+    digitalWrite(LED2, LOW);
+  }
+#if 1
   gate2();
 #else
   gate3();
