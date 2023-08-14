@@ -85,6 +85,7 @@ void setup() {
 
 
 void loop() {
+	//asd
   currentTime = millis();
   if (digitalRead(6) == HIGH) {
     digitalWrite(LED1, HIGH);
