@@ -33,7 +33,7 @@ void writeGate(bool b) {
 void updateServo(bool has_updated, int rotate1, int rotate2) {
   if (has_updated) {
     servo_pin_2.write(rotate1);
-    servo_pin_3.write(rotate2);kjkj
+    servo_pin_3.write(rotate2);
   }
 }
 
