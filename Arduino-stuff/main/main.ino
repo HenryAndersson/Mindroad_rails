@@ -1,4 +1,3 @@
-#include <Thread.h>
 #include <Servo.h>
 #include <Bounce2.h>
 #include <Adafruit_GFX.h>
@@ -88,8 +87,8 @@ void loop() {
   currentTime = millis();
 	lamps();
 #if 0
-  gate2();
-#else
   gate3();
+#else
+  gate2();
 #endif
 }

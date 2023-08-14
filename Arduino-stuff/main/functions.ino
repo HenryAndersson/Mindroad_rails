@@ -27,6 +27,7 @@ void drawLine(int start, int stop, int thick) {
   }
 }
 
+
 void writeGate(bool b) {
   if (b) {
     writeString("on");
@@ -66,6 +67,7 @@ void rotate_servo(unsigned long* StartTimer_servo, bool sev, int* servo_angle, b
     *StartTimer_servo = currentTime;
     servo_pin.write(*servo_angle);
     *servo_angle -= ANGLE_MOVE;
+
     if (*servo_angle <= ANGLE_OFF) {
       *servo_angle = ANGLE_OFF;
       *sev_av = true;
