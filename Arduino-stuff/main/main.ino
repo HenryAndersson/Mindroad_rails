@@ -85,20 +85,9 @@ void setup() {
 
 
 void loop() {
-	//asd
   currentTime = millis();
-  if (digitalRead(6) == HIGH) {
-    digitalWrite(LED1, HIGH);
-  } else {
-    digitalWrite(LED1, LOW);
-  }
-
-  if (digitalRead(5) == HIGH) {
-    digitalWrite(LED2, HIGH);
-  } else {
-    digitalWrite(LED2, LOW);
-  }
-#if 1
+	lamps();
+#if 0
   gate2();
 #else
   gate3();

@@ -36,10 +36,16 @@ void writeGate(bool b) {
 }
 
 
-void updateServo(bool has_updated, int rotate1, int rotate2) {
-  if (has_updated) {
-    servo_pin_2.write(rotate1);
-    servo_pin_3.write(rotate2);
+void lamps(){
+  if (digitalRead(6) == HIGH) {
+    digitalWrite(LED1, HIGH);
+  } else {
+    digitalWrite(LED1, LOW);
+  }
+  if (digitalRead(5) == HIGH) {
+    digitalWrite(LED2, HIGH);
+  } else {
+    digitalWrite(LED2, LOW);
   }
 }
 
@@ -84,7 +90,7 @@ void gate2() {
     sev2_av = false;
   }
 
-  //rotate_servo(&StartTimer_servo1, sev1, &servo_angle1, &sev1_av, servo_pin_2);
+  rotate_servo(&StartTimer_servo1, sev1, &servo_angle1, &sev1_av, servo_pin_2);
   rotate_servo(&StartTimer_servo2, sev2, &servo_angle2, &sev2_av, servo_pin_3);
 
 
@@ -127,19 +133,25 @@ void gate3() {
     case 0:
       writeString("LEFT");
       drawLine(0, SCREEN_WIDTH / 3, 3);
-      updateServo(has_updated, 0, 0);
+			sev1 = false;
+			sev2 = false;
       break;
     case 1:
       writeString("MIDDLE");
       drawLine(SCREEN_WIDTH / 3, (SCREEN_WIDTH * 2) / 3, 3);
-      updateServo(has_updated, 0, 70);
+			sev1 = false;
+			sev2 = true;
       break;
     case 2:
       writeString("RIGHT");
       drawLine((SCREEN_WIDTH * 2) / 3, SCREEN_WIDTH, 3);
-      updateServo(has_updated, 70, 70);
+			sev1 = true;
+			sev2 = true;
       break;
   }
+
+  rotate_servo(&StartTimer_servo1, sev1, &servo_angle1, &sev1_av, servo_pin_2);
+  rotate_servo(&StartTimer_servo2, sev2, &servo_angle2, &sev2_av, servo_pin_3);
 
   display.display();
 }
