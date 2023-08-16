@@ -17,7 +17,8 @@ I utvecklingsmiljön så kan du länka hela mappen till IDEn så du slipper att 
 Om du så vill så kan du genom att gå till ```Sketch -> Include Library -> Add .ZIP Library```  
 
 Du måste ha rätt inställningar till att kunna ladda upp koden och köra den.  
-I ```Tools``` menyn kolla att:
+I ```Tools``` menyn kolla att
+
 	- Board: Arduino Nano
 	- Processor:ATmega328P (Old Bootloader)
 	- Select the port which says Ardunio Nano
