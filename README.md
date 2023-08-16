@@ -31,9 +31,9 @@ Jag tog bort den med: ```sudo apt purge brltty```
 Som i alla arduino så finns det ```void setup``` och ```void loop```  
 ```void setup``` körs en gång vid start av arduinon och ```void loop``` loopar varje gång den är klar.
 
-Levebrödet med koden ligger i ```void rotate_servor()```  
+Levebrödet med koden ligger i ```void rotate_servo()```  
 
-### rotate_servor() lever i 4 konstanter och 4 variabler.
+### rotate_servo() lever i 4 konstanter och 4 variabler.
 ```
 #define ANGLE_ON 70
 #define ANGLE_OFF 0
@@ -50,7 +50,7 @@ Levebrödet med koden ligger i ```void rotate_servor()```
 ```internalTimer_servo``` definierar tidsskillnad.  
 Tillsammans så kan dessa två avgöra hur lång tid det tar servon att göra en uppgift.  
 
-För att ```rotate_servor()``` ska funka så måste arduino exekvera koden varje klockcykel.
+För att ```rotate_servo()``` ska funka så måste arduino exekvera koden varje klockcykel.
 Funktionen fungerar på 6 variabler
 ```
 Servo_pin
@@ -64,9 +64,22 @@ CurrentTime
 
 ```Servo_pin``` är bara vilken servo du vill rotera på. Utifrån servo biblioteket 
 så skaper du en servo objekt ```Servo NAMN``` sen kopplar du objektet med en digital pin.  
-``` Servo NAMN ``` och sen i ```void setup()``` har du 2 rader, ```
-pinMode(2, OUTPUT);
-NAMN.attach(2, 530, 2600);```
+``` Servo NAMN ``` och sen i ```void setup()``` har du 2 rader,  
+```
+pinMode(DIGITAL_PIN, OUTPUT);  
+NAMN.attach(DIGITAL_PIN, 530, 2600);  
+```
+
+Som sagt så måste rotate_servo läsas i ```void loop()``` varje gång för att få den att funka.
+
+```Servo_pin``` som sagt är ett objekt som Funktionen refererar till att ändra sig.  
+```sev``` Är en bool då TRUE rör den sig mot "på" och FALSE rör den sig mot "på"  
+```sev_av``` betyder servo available, Jag har andvänt mig utav det så att det inte går  
+att trycka på knapparna tills den är klar.  
+```servo_angle``` är den nuvarande vinkeln servon är i stunden.  
+```StartTimer_servo``` ser till att det blir en tidsskillnaden.  
+
+I ```void loop()``` så måste raden ```currentTime = millis();``` finnas för att funktionen ska funka.  
 
 
 
