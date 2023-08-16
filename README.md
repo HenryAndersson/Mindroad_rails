@@ -111,6 +111,15 @@ coolguyfighting(state);
 display.display();
 ```
 
+Som i [dokumentationen](https://learn.adafruit.com/adafruit-gfx-graphics-library?view=all) så finns det flera sätt att skriva till skärmen.  
+Jag använde mig utav 2:
+
+1) Behandlade skärmen som ett cordinatsystem med ```display.drawPixel(x,y,WHITE);```  
+
+2) Med ```display.write(char letter)```. Du sätter först vart du vill skriva sen skriver.  
+Glöm inte bort att ```display.setCursor(x,y)``` med rätt värden varje gång du gör en ändring.  
+
+
 
 ## 3D modellerna.
 

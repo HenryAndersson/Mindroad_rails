@@ -19,6 +19,7 @@
 
 Bounce button1 = Bounce();
 Bounce button2 = Bounce();
+
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 //första servon
