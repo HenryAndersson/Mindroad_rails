@@ -1,6 +1,7 @@
 # Henrys sommarjobb!
 
 Mycket av det jag skrev tog jag från vad Otto skrev på mindroads [MindChallenge git](https://github.com/MindRoadAB/MindChallenge-Example).  
+Har du frågor så kan du kontakta mig via liu mailen. ```henan555@student.liu.se```  
 
 ## Här är många av mina källor som jag anvdände mig utav.
 [Servo motor](https://components101.com/motors/servo-motor-basics-pinout-datasheet)
@@ -116,11 +117,20 @@ Jag använde mig utav 2:
 
 1) Behandlade skärmen som ett cordinatsystem med ```display.drawPixel(x,y,WHITE);```  
 
-2) Med ```display.write(char letter)```. Du sätter först vart du vill skriva sen skriver.  
+2) Med ```display.write(char letter)```  
 Glöm inte bort att ```display.setCursor(x,y)``` med rätt värden varje gång du gör en ändring.  
 
-
-
-## 3D modellerna.
-
 ## Vad sm kan förbättras.
+### mycket lol
+
+Just nu så är alla variabler globala. Jag skulle vilja enkapsylera dem i en klass istället.
+Jag tycker inte om att ```currentTime``` är global, jag skulle vilja refaktorera koden så att  
+den är ett argument till ```void rotate_servo```.  
+
+Jag skulle vilje dela upp funktionerna till mindre delar så att koden blir mer modulär.  
+Nu är logik och att skriva till skärmen blandad, i min parfekta värld så skulle koden se ut  
+```
+currentTime = millis()
+gateX()
+draw_gateX()
+```

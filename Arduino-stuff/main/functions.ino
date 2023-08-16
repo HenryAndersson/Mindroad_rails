@@ -1,15 +1,11 @@
 
 
+// % operatorn är rest, inte modulo. Så jag skrev en egen
 int modulo(int x, int N) {
   return (x % N + N) % N;
 }
 
-
-int mini(int x, int y) {
-  return x <= y ? x : y;
-}
-
-
+//Skriver strängar till skärmen
 void writeString(char* text) {
   char* c = text;
   while (*c) {
@@ -18,11 +14,11 @@ void writeString(char* text) {
   }
 }
 
-
+//cool grej jag gjorde för att rita tjocka sträck på skärmen
 void drawLine(int start, int stop, int thick) {
   for (int i = start; i < stop; ++i) {
     for (int j = 0; j < thick; j++) {
-      display.drawPixel(i, 16 + j, WHITE);
+      display.drawPixel(i, 16 + j, WHITE); //16 för att börja på halva skärmen
     }
   }
 }
@@ -36,7 +32,7 @@ void writeGate(bool b) {
   }
 }
 
-
+//debug med lampor
 void lamps(){
   if (digitalRead(6) == HIGH) {
     digitalWrite(LED1, HIGH);
@@ -50,7 +46,7 @@ void lamps(){
   }
 }
 
-
+//finns i GIT
 void rotate_servo(unsigned long* StartTimer_servo, bool sev, int* servo_angle, bool* sev_av, Servo servo_pin) {
   unsigned long deltaTime = currentTime - *StartTimer_servo;
   if (deltaTime >= internalTimer_servo && sev) {
@@ -75,7 +71,7 @@ void rotate_servo(unsigned long* StartTimer_servo, bool sev, int* servo_angle, b
   }
 }
 
-
+//2 gates
 void gate2() {
   button1.update();
   button2.update();
@@ -109,7 +105,7 @@ void gate2() {
   display.display();
 }
 
-
+//3gates
 void gate3() {
   button1.update();
   button2.update();
