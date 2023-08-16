@@ -23,6 +23,11 @@ I ```Tools``` menyn kolla att
 	- Processor:ATmega328P (Old Bootloader)
 	- Select the port which says Ardunio Nano
 
+Jag hade problem med att IDEn inte kunde hitta arduinon genom usb. Jag löste det genom  
+att ta bort brltty från min dator, vill du inte göra det så får du hitta en annan lösning.  
+
+Jag Tog bort den med: ```sudo apt purge brltty```
+
 ## Hur koden är uppdelad.
 Som i alla arduino så finns det ```void setup``` och ```void loop```  
 ```void setup``` körs en gång vid start av arduinon och ```void loop``` loopar varje gång den är klar.
