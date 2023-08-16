@@ -130,7 +130,9 @@ den är ett argument till ```void rotate_servo```.
 Jag skulle vilje dela upp funktionerna till mindre delar så att koden blir mer modulär.  
 Nu är logik och att skriva till skärmen blandad, i min parfekta värld så skulle koden se ut  
 ```
-currentTime = millis()
-gateX()
-draw_gateX()
+currentTime = millis();
+state = gateX(currentTime);
+draw_gateX(state);
 ```
+
+Och fler C makron lite här och där för att dom är coola.  
