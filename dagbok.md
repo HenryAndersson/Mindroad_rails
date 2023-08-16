@@ -90,7 +90,7 @@ PWM signal is given in through this wire to drive the motor
 [servo schematics](https://www.electronics-lab.com/project/using-sg90-servo-motor-arduino/)  
 [buttons schematics](https://roboindia.com/tutorials/arduino-nano-digital-input-push-button/)  
 [nano schematics](https://www.teachmemicro.com/wp-content/uploads/2019/06/Arduino-Nano-pinout.jpg)  
-[bajs](https://thesolaruniverse.wordpress.com/2019/10/28/how-to-wire-and-run-a-128x32-oled-display-with-ssd1306-driver-with-an-arduino/)
+[oled skrärm](https://thesolaruniverse.wordpress.com/2019/10/28/how-to-wire-and-run-a-128x32-oled-display-with-ssd1306-driver-with-an-arduino/)
 
 `sudo apt purge brltty`
 
