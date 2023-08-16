@@ -127,7 +127,7 @@ Just nu så är alla variabler globala. Jag skulle vilja enkapsylera dem i en kl
 Jag tycker inte om att ```currentTime``` är global, jag skulle vilja refaktorera koden så att  
 den är ett argument till ```void rotate_servo```.  
 
-Jag skulle vilje dela upp funktionerna till mindre delar så att koden blir mer modulär.  
+Jag skulle vilja dela upp funktionerna till mindre delar så att koden blir mer modulär.  
 Nu är logik och att skriva till skärmen blandad, i min parfekta värld så skulle koden se ut  
 ```
 currentTime = millis();
