@@ -33,7 +33,7 @@ Som i alla arduino så finns det ```void setup``` och ```void loop```
 
 Levebrödet med koden ligger i ```void rotate_servor()```  
 
-### Den lever i 4 konstanter och 4 variabler.
+### rotate_servor() lever i 4 konstanter och 4 variabler.
 ```
 #define ANGLE_ON 70
 #define ANGLE_OFF 0
@@ -42,11 +42,16 @@ Levebrödet med koden ligger i ```void rotate_servor()```
 #define internalTimer_servo 30  //millisecond
 ```
 
-```ANGLE_ON``` betyder max värdet för servon när den är "på".
-```ANGLE_OFF``` betyder minimum värdet för servon när den är "av".
+```ANGLE_ON``` betyder max värdet för servon när den är "på".  
+```ANGLE_OFF``` betyder minimum värdet för servon när den är "av".  
 
-```ANGLE_MOVE``` betyder hur mycket servon ska röra sig efter varje tidsskillnad.
-```internalTimer_servo``` definierar tidsskillnad.
+
+```ANGLE_MOVE``` betyder hur mycket servon ska röra sig efter varje tidsskillnad.  
+```internalTimer_servo``` definierar tidsskillnad.  
+Tillsammans så kan dessa två avgöra hur lång tid det tar servon att göra en uppgift.  
+
+För att ```rotate_servor()``` ska funka så måste arduino exekvera koden varje klockcykel.
+
 
 ## 3D modellerna.
 

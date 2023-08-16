@@ -17,25 +17,25 @@
 #define LED1 7
 #define LED2 8
 
-
-Servo servo_pin_2;
-Servo servo_pin_3;
-
 Bounce button1 = Bounce();
 Bounce button2 = Bounce();
-
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+//första servon
+Servo servo_pin_2;
 bool sev1 = false;
 bool sev1_av = true;
 int servo_angle1 = 0;
 unsigned long StartTimer_servo1 = 0;
 
+//andra servon
+Servo servo_pin_3;
 bool sev2 = false;
 bool sev2_av = true;
 int servo_angle2 = 0;
 unsigned long StartTimer_servo2 = 0;
 
+//globala variabler
 unsigned long currentTime = -1;
 int state = 1;
 
