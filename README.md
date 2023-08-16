@@ -73,7 +73,7 @@ NAMN.attach(DIGITAL_PIN, 530, 2600);
 Som sagt så måste rotate_servo läsas i ```void loop()``` varje gång för att få den att funka.
 
 ```Servo_pin``` som sagt är ett objekt som Funktionen refererar till att ändra sig.  
-```sev``` Är en bool då TRUE rör den sig mot "på" och FALSE rör den sig mot "på"  
+```sev``` Är en bool då TRUE rör den sig mot "på" och FALSE rör den sig mot "av"  
 ```sev_av``` betyder servo available, Jag har andvänt mig utav det så att det inte går  
 att trycka på knapparna tills den är klar.  
 ```servo_angle``` är den nuvarande vinkeln servon är i stunden.  
@@ -81,6 +81,35 @@ att trycka på knapparna tills den är klar.
 
 I ```void loop()``` så måste raden ```currentTime = millis();``` finnas för att funktionen ska funka.  
 
+### Skärm
+Att programmera på skärmen krävs 2 bibliotek och några rader kod.  
+```
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 32
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+```
+
+I ```void setup()``` så behövs
+```
+  display.clearDisplay();
+  display.display();
+  display.setTextSize(2);
+  display.setTextColor(WHITE);
+  display.setCursor(0, 0);
+  display.cp437(true);
+```
+
+Innan varje ändring så ska ```display.clearDisplay()``` köras och efter ändringen så ska ```display.display()``` köras.
+Exempelvis:
+```
+display.clearDisplay();
+coolguyfighting(state);
+display.display();
+```
 
 
 ## 3D modellerna.
