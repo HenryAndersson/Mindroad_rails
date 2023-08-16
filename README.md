@@ -10,7 +10,8 @@ Mycket av det jag skrev tog jag från vad Otto skrev på mindroads [MindChalleng
 [oled skrärm](https://thesolaruniverse.wordpress.com/2019/10/28/how-to-wire-and-run-a-128x32-oled-display-with-ssd1306-driver-with-an-arduino/)
 
 ## Hur koden är uppdelad.
-Som i alla arduino så finns det ```void setup``` och ```void loop```
+Som i alla arduino så finns det ```void setup``` och ```void loop```  
+```void setup``` körs en gång vid start av arduinon och ```void loop``` loopar varje gång den är klar.
 
 ## 3D modellerna.
 
