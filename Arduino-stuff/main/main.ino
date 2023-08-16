@@ -37,7 +37,7 @@ unsigned long StartTimer_servo2 = 0;
 
 //globala variabler
 unsigned long currentTime = -1;
-int state = 1;
+int state = 1; //bara för gate3
 
 
 void setup() {

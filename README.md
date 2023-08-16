@@ -51,6 +51,23 @@ Levebrödet med koden ligger i ```void rotate_servor()```
 Tillsammans så kan dessa två avgöra hur lång tid det tar servon att göra en uppgift.  
 
 För att ```rotate_servor()``` ska funka så måste arduino exekvera koden varje klockcykel.
+Funktionen fungerar på 6 variabler
+```
+Servo_pin
+sev
+sev_av
+servo_angle
+StartTimer_servo
+
+CurrentTime
+```
+
+```Servo_pin``` är bara vilken servo du vill rotera på. Utifrån servo biblioteket 
+så skaper du en servo objekt ```Servo NAMN``` sen kopplar du objektet med en digital pin.  
+``` Servo NAMN ``` och sen i ```void setup()``` har du 2 rader, ```
+pinMode(2, OUTPUT);
+NAMN.attach(2, 530, 2600);```
+
 
 
 ## 3D modellerna.
