@@ -120,7 +120,7 @@ Jag använde mig utav 2:
 2) Med ```display.write(char letter)```  
 Glöm inte bort att ```display.setCursor(x,y)``` med rätt värden varje gång du gör en ändring.  
 
-## Vad sm kan förbättras.
+## Vad som kan förbättras.
 ### mycket lol
 
 Just nu så är alla variabler globala. Jag skulle vilja enkapsylera dem i en klass istället.
