@@ -27,23 +27,17 @@ Bounce button2 = Bounce();
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 bool sev1 = false;
-bool sev2 = false;
-int state = 1;
-
-
-unsigned long currentTime = -1;
-
+bool sev1_av = true;
+int servo_angle1 = 0;
 unsigned long StartTimer_servo1 = 0;
+
+bool sev2 = false;
+bool sev2_av = true;
+int servo_angle2 = 0;
 unsigned long StartTimer_servo2 = 0;
 
-
-int servo_angle1 = 0;
-int servo_angle2 = 0;
-
-bool sev1_av = true;
-bool sev2_av = true;
-
-bool has_updated = true;
+unsigned long currentTime = -1;
+int state = 1;
 
 
 void setup() {

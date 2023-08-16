@@ -1,4 +1,4 @@
-# Henrys sommarjob!
+# Henrys sommarjobb!
 
 Mycket av det jag skrev tog jag från vad Otto skrev på mindroads [MindChallenge git](https://github.com/MindRoadAB/MindChallenge-Example).  
 
@@ -21,17 +21,32 @@ I ```Tools``` menyn kolla att
 
 	- Board: Arduino Nano
 	- Processor:ATmega328P (Old Bootloader)
-	- Select the port which says Ardunio Nano
 
 Jag hade problem med att IDEn inte kunde hitta arduinon genom usb. Jag löste det genom  
 att ta bort brltty från min dator, vill du inte göra det så får du hitta en annan lösning.  
 
-Jag Tog bort den med: ```sudo apt purge brltty```
+Jag tog bort den med: ```sudo apt purge brltty```
 
 ## Hur koden är uppdelad.
 Som i alla arduino så finns det ```void setup``` och ```void loop```  
 ```void setup``` körs en gång vid start av arduinon och ```void loop``` loopar varje gång den är klar.
 
+Levebrödet med koden ligger i ```void rotate_servor()```  
+
+### Den lever i 4 konstanter och 4 variabler.
+```
+#define ANGLE_ON 70
+#define ANGLE_OFF 0
+
+#define ANGLE_MOVE 3 //degres
+#define internalTimer_servo 30  //millisecond
+```
+
+```ANGLE_ON``` betyder max värdet för servon när den är "på".
+```ANGLE_OFF``` betyder minimum värdet för servon när den är "av".
+
+```ANGLE_MOVE``` betyder hur mycket servon ska röra sig efter varje tidsskillnad.
+```internalTimer_servo``` definierar tidsskillnad.
 
 ## 3D modellerna.
 

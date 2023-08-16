@@ -111,18 +111,15 @@ void gate2() {
 
 
 void gate3() {
-  has_updated = false;
   button1.update();
   button2.update();
 
   if (button1.fell()) {
     Serial.println("1!");
     --state;
-    has_updated = true;
   }
 
   if (button2.fell()) {
-    has_updated = true;
     Serial.println("2!");
     ++state;
   }
